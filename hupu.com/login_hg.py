@@ -106,8 +106,9 @@ def get_photo_score_by_stage(stage_num='8'):
         return False
     data = json.loads(res)
     stage = data['quiz']['title'] # 第几期
-    if not os.path.isdir(stage):
-        os.mkdir(stage)
+    img_dir = './img/' + stage
+    if not os.path.isdir(img_dir):
+        os.mkdir(img_dir)
 
     questions = data['questions']
     for q in questions:
@@ -115,9 +116,10 @@ def get_photo_score_by_stage(stage_num='8'):
         q_score = q['avgScore']
         q_url = q['image']
         image = get_photo(q_url)
-        image_name = stage + '/' + q_id + '-' + str(q_score) + '.jpg'
+        image_name = img_dir + '/' + q_id + '-' + str(q_score) + '.jpg'
         with open(image_name, 'wb') as f:
             f.write(image)
+    return stage
     '''
     print(data)
     print(data.keys())
@@ -150,8 +152,12 @@ def get_photo(url):
     im.show()'''
 
 def get_photo_score():
-    for stage_num in range(5, 19):
-        get_photo_score_by_stage(stage_num)
+    for stage_num in range(5, 42):
+        stage = get_photo_score_by_stage(stage_num)
+        if stage:
+            print("quiz/{}，{}照片搞定！".format(stage_num, stage))
+        else:
+            print("quiz/{}没有照片".format(stage_num))
 
 if __name__ == '__main__':
     #test_get_photo_score_by_stage(6)
