@@ -1,18 +1,13 @@
-import time, threading
+import os, re
+import time
 
-# 新线程执行的代码:
-def loop():
-    print('thread %s is running...' % threading.current_thread().name)
-    n = 0
-    while n < 150:
-        n = n + 1
-        print('thread %s >>> %s' % (threading.current_thread().name, n))
-        time.sleep(1)
-    print('thread %s ended.' % threading.current_thread().name)
+from collections import OrderedDict
 
-print('thread %s is running...' % threading.current_thread().name)
-for m in range(8):
-    t = threading.Thread(target=loop, name='LoopThread_'+str(m))
-    t.start()
-#t.join()
-print('thread %s ended.' % threading.current_thread().name)
+from scraper import Scraper
+
+poem_base_url = 'http://sc.zdic.net'
+
+next_page_url = 'http://sc.zdic.net/shiren/tang/index_2.html'
+
+pattern = r'<a href=(.+?)>下一页</a>'
+
