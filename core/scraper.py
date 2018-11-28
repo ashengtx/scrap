@@ -15,7 +15,7 @@ class Scraper(object):
         except IOError:
             print('Cookie未加载！')
 
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36'}
+        headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'}
 
         opener = request.build_opener(request.HTTPCookieProcessor(cookie))
         # 给openner添加headers, addheaders方法接受元组而非字典
@@ -59,9 +59,16 @@ class Scraper(object):
     def update_headers(self, new_headers):
         self._opener.addheaders = [(key, value) for key, value in new_headers.items()]
 
+    def add_headers(self, tobeadd):
+        addheaders = dict(self._opener.addheaders)
+        for k, v in tobeadd.items():
+            if k not in addheaders:
+                self._opener.addheaders.append((k, v))
+        return True
+
     def url_encode(self, data):
         if type(data) is str:
             return parse.quote_plus(data)
         elif type(data) is dict:
-            return parse.urlencode(data)
+            return parse.urlencode(data).encode('utf8')
 

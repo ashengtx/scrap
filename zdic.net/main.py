@@ -674,7 +674,11 @@ def get_all_poems():
 
 
 def main():
-    get_all_idiom_details()
+    url = idiom_base_url
+    html = my_open(url)
+    bsobj = html2dom(html)
+    radicals = get_radicals(bsobj)
+    print(radicals)
 
 if __name__ == '__main__':
 
