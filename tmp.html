@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="spm-id" content="a2e3k">
+    <meta name="aplus-version" content="aplus_std">
+    <meta name="aplus-waiting" content="MAN">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>达摩盘</title>
+    <link type="image/x-icon" href="//gtms02.alicdn.com/tps/i2/TB1hK7SFVXXXXcpXVXX_.qWFVXX-27-32.png" rel="shortcut icon">
+</head>
+<body><script>
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=2205558145945&aplus&yunid=&58554ee77e575&trid=0b14d89c00154763270956602e7d94&asid=AZmDgoWttjpdtgoLMwAAAAD8Hu1fqtMjow==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
+</script>
+
+<div id="app">
+    <div id="pb" style="background:#e6e6e6;position:fixed;left:50%;top:50%;width:300px;margin:-20px 0 0 -150px;height:2px;">
+        <div style="width:0%;background:#68499E;height:100%;transition:all 0.3s;margin-bottom:-2px;"></div>
+    </div>
+</div>
+<script>
+    !function(t,e,n,a){n=0,t=setInterval(function(){e=document.getElementById("pb"),e?(a=.2*Math.random(),n+a<.9&&(n+=a,e=e.getElementsByTagName("div")[0],e.style.width=Math.round(100*n)+"%")):clearInterval(t)},500)}();
+</script>
+<script>
+    (async function() {
+        let getDmpCdn = fetch('/cdn_2/version?systemName=dmp_new', {
+            method: 'get'
+        })
+        let getIsDaily = fetch('/cdn_2/version?systemName=daily', {
+            method: 'get'
+        })
+        let [cdnDmp, cdnIsDaily] = await Promise.all([getDmpCdn, getIsDaily])
+        let [cdnDmpData, cdnIsDailyData] = await Promise.all([cdnDmp.json(), cdnIsDaily.json()])
+
+        //环境判断：从diamond配置里读取daily配置为true
+        window._isDaily = cdnIsDailyData.data.cdnVersion === 'true'
+        window._hostPrefix = window._isDaily ? '//g.assets.daily.taobao.net/' : '//g.alicdn.com/'
+
+        //当前项目配置
+        let bootJSUrl = `${window._hostPrefix}mm/dmp-new/${cdnDmpData.data.cdnVersion}/boot.js`
+        let bootScript = document.createElement('script')
+
+        bootScript.id = 'boot'
+        bootScript.src = bootJSUrl
+        document.body.appendChild(bootScript)
+    })()
+</script>
+<script src="//g.alicdn.com/alilog/mlog/aplus_v2.js" id="tb-beacon-aplus" exparams="clog=o&aplus&sidx=aplusSidx&ckx=aplusCkx"></script>
+</body>
+</html>
