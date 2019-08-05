@@ -1,0 +1,110 @@
+[
+	{
+		"domain": "taobao.com",
+		"expiry": 1579915379,
+		"httpOnly": false,
+		"name": "l",
+		"path": "/",
+		"secure": false,
+		"value": "cBaTqJduqbkRLR9EXOCgZuIRCe7OSIRAguPRw5D9i_5ph1Lsi4QOk2zJ5ep6VjWdOoTB4k6UXwp9-etkid0Dt5UJ9dWA."
+	},
+	{
+		"domain": "taobao.com",
+		"expiry": 2195083369,
+		"httpOnly": false,
+		"name": "cna",
+		"path": "/",
+		"secure": false,
+		"value": "azjFFUIhv1cCAXPsJ7LDWJKE"
+	},
+	{
+		"domain": "taobao.com",
+		"httpOnly": false,
+		"name": "v",
+		"path": "/",
+		"secure": false,
+		"value": "0"
+	},
+	{
+		"domain": "taobao.com",
+		"httpOnly": true,
+		"name": "skt",
+		"path": "/",
+		"secure": false,
+		"value": "3dc22ba3ac3260b4"
+	},
+	{
+		"domain": "taobao.com",
+		"httpOnly": false,
+		"name": "sn",
+		"path": "/",
+		"secure": false,
+		"value": "graco%E8%91%9B%E8%8E%B1%E6%97%97%E8%88%B0%E5%BA%97%3A%E9%92%BB%E5%B1%951"
+	},
+	{
+		"domain": "taobao.com",
+		"httpOnly": false,
+		"name": "_tb_token_",
+		"path": "/",
+		"secure": false,
+		"value": "e63ed03eebe87"
+	},
+	{
+		"domain": "taobao.com",
+		"httpOnly": true,
+		"name": "unb",
+		"path": "/",
+		"secure": false,
+		"value": "2205558145945"
+	},
+	{
+		"domain": "taobao.com",
+		"httpOnly": true,
+		"name": "cookie2",
+		"path": "/",
+		"secure": false,
+		"value": "1593bac854d38d8665fad4a5ab6e9b3d"
+	},
+	{
+		"domain": "taobao.com",
+		"expiry": 1579915379,
+		"httpOnly": false,
+		"name": "isg",
+		"path": "/",
+		"secure": false,
+		"value": "BJiYMH8xcUVEoV3ByBuTnkzHacbqKfX-ThaXFNKJ5VOGbTlXepCMm7dfo-V4_bTj"
+	},
+	{
+		"domain": "taobao.com",
+		"httpOnly": false,
+		"name": "uc1",
+		"path": "/",
+		"secure": false,
+		"value": "lng=zh_CN&cookie14=UoTaHPv9%2FI80Dw%3D%3D"
+	},
+	{
+		"domain": "taobao.com",
+		"httpOnly": false,
+		"name": "x",
+		"path": "/",
+		"secure": false,
+		"value": "4250995511"
+	},
+	{
+		"domain": "taobao.com",
+		"httpOnly": false,
+		"name": "csg",
+		"path": "/",
+		"secure": false,
+		"value": "dfaa513a"
+	},
+	{
+		"domain": "taobao.com",
+		"expiry": 1572139362.566449,
+		"httpOnly": false,
+		"name": "t",
+		"path": "/",
+		"secure": false,
+		"value": "8002f5af69453edb0dd2fbf5e133ed1f"
+	}
+]

@@ -1,8 +1,10 @@
-import time
+import time, re
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
 import pyautogui
+
+from bs4 import BeautifulSoup
 
 def get_tracks(distance):
     '''
@@ -50,8 +52,44 @@ def login(username, password):
     # pyautogui.typewrite(username)
     # pyautogui.press('tab')
     
+def load_html_from_file(filepath):
+    with open(filepath, 'r', encoding='utf8') as fin:
+        return fin.read()
+
+def get_first_class_tags(html):
+    dom = BeautifulSoup(html, 'html.parser')
+    tag_dls = dom.select('dl[class*="dmp-newae-kn mb20"]')
+    for tag_dl in tag_dls:
+        tag_dt = tag_dl.select('dt')[0]
+        print('['+tag_dt.text[1:-1]+']')
+        for a in tag_dl.select('dd')[0].select('a'):
+            print(a.text)
+
+def has_next_page(html):
+    dom = BeautifulSoup(html, 'html.parser')
+    print(dom)
+    tag = dom.select_one('li[class="dmp-newG-fw"][mxa="dmp-newN:i"]').select_one('a')
+    print(tag)
+    if re.findall(r'mx-click=".*?\(\{page:.*\}\)"', str(tag)):
+        print('True')
+        return True
+    return False
+
+def test_re():
+    tag = """<a class="mc-iconfont dmp-newG-fx rotate180" href="#" mx-click="mx_165__cD({})"></a>"""
+    res = re.findall(r'mx-click=".*?\(\{page:.*\}\)"', tag)
+    print(res)
+
+def test():
+    s = """<li mxa="dmp-newN:i" class="dmp-newG-fw"><a class="mc-iconfont dmp-newG-fx rotate180 " href="#" mx-click="mx_13763__cD({page:2})" data-spm-anchor-id="a2e3k.11816884.0.0"></a></li>"""
+    dom = BeautifulSoup(s, 'html.parser')
+    print(dom.contents[0])
 
 if __name__ == "__main__":
-    username = "graco葛莱旗舰店:钻展1"
-    password = "btw12345678"
-    login(username, password)
+    # username = "graco葛莱旗舰店:钻展1"
+    # password = "btw12345678"
+    # login(username, password)
+    # html = load_html_from_file('tag_index.html')
+    html = """<li mxa="dmp-newN:i" class="dmp-newG-fw"><a class="mc-iconfont dmp-newG-fx rotate180 " href="#" mx-click="mx_13763__cD({page:2})" data-spm-anchor-id="a2e3k.11816884.0.0"></a></li>"""
+    # get_first_class_tags(html)
+    has_next_page(html)
